@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDETjZ8HQaydghCNtF2965IctrQGsKTgDk">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(0, 0),
+          zoom: 2
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        var mAA = new google.maps.Marker({
+            position: new google.maps.LatLng(42.2734261,-83.8077296),
+            map: map,
+            title: "Ann Arbor, MI"
+        });
+        var mBoston = new google.maps.Marker({
+            position: new google.maps.LatLng(42.3133735,-71.0571571),
+            map: map,
+            title: "Boston, MA"
+            //animation: google.maps.Animation.DROP
+            //icon: 'https://lh6.googleusercontent.com/-P5ztcbMNHBg/AAAAAAAAAAI/AAAAAAAAETk/fIS0jM2QteU/photo.jpg?sz=100'
+        });
+        var mBloom = new google.maps.Marker({
+            position: new google.maps.LatLng(39.164292, -86.512620),
+            map: map,
+            title: "Bloomington, IN"
+        });
+        var mCologne = new google.maps.Marker({
+            position: new google.maps.LatLng(50.936912, 6.961829),
+            map: map,
+            title: "Cologne, Germany"
+        });
+        var mColum = new google.maps.Marker({
+            position: new google.maps.LatLng(39.960324, -82.997695),
+            map: map,
+            title: "Columbus, OH"
+        });
+        var mParis = new google.maps.Marker({
+            position: new google.maps.LatLng(48.8588589,2.3470599),
+            map: map,
+            title: "Paris, France"
+        });
+        var mPortl = new google.maps.Marker({
+            position: new google.maps.LatLng(45.523197, -122.669528),
+            map: map,
+            title: "Portland, OR"
+        });
+        var mPhil = new google.maps.Marker({
+            position: new google.maps.LatLng(40.0049314, -75.258118),
+            map: map,
+            title: "Philadelphia, PA"
+        });
+        var mLasV = new google.maps.Marker({
+            position: new google.maps.LatLng(36.168249, -115.158521),
+            map: map,
+            title: "Las Vegas, NV"
+        });
+        var mLosA = new google.maps.Marker({
+            position: new google.maps.LatLng(34.052363, -118.256551),
+            map: map,
+            title: "Los Angeles, CA"
+        });
+        var mNaples = new google.maps.Marker({
+            position: new google.maps.LatLng(26.1455604,-81.8368071),
+            map: map,
+            title: "Naples, FL"
+        });
+        var mSanFran = new google.maps.Marker({
+            position: new google.maps.LatLng(37.776698, -122.419061),
+            map: map,
+            title: "San Francisco, CA"
+        });
+        var mOsaka = new google.maps.Marker({
+            position: new google.maps.LatLng(34.720175, 135.491030),
+            map: map,
+            title: "Osaka, Japan"
+        });
+        var mQuebec = new google.maps.Marker({
+            position: new google.maps.LatLng(46.815733, -71.241703),
+            map: map,
+            title: "Quebec City, Canada"
+        });
+        var mSalou = new google.maps.Marker({
+            position: new google.maps.LatLng(41.077949, 1.131658),
+            map: map,
+            title: "Salou, Spain"
+        });
+        var mSeattle = new google.maps.Marker({
+            position: new google.maps.LatLng(47.6149942,-122.4759889),
+            map: map,
+            title: "Seattle, WA"
+        });
+        var mSantiago = new google.maps.Marker({
+            position: new google.maps.LatLng(-33.4532908,-70.714213),
+            map: map,
+            title: "Santiago, Chile"
+        });
+
+        //set markers
+        marker.setMap(mBoston);
+        marker.setMap(mBloom);
+        marker.setMap(mColum);
+        marker.setMap(mLasV);
+        marker.setMap(mParis);
+        marker.setMap(mPortl);
+        marker.setMap(mCologne);
+        marker.setMap(mOsaka);
+        marker.setMap(mQuebec);
+        marker.setMap(mLosA);
+        marker.setMap(mSanFran);
+        marker.setMap(mSeattle);
+        marker.setMap(mSantiago);
+        marker.setMap(mPhil);
+        marker.setMap(mNaples);
+        marker.setMap(mAA);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>

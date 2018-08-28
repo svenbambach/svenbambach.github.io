@@ -1,0 +1,618 @@
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+%\usepackage{times}
+%\renewcommand{\familydefault}{bch} %ppl, bch, cmss
+
+% font and linespacing
+\usepackage[sfdefault]{overlock} %% Option 'sfdefault' only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\linespread{1.05}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{comment}
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em} %1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\begin{enumerate}{}{%
+       % {\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{enumerate}\vspace{-.6\baselineskip}}
+       % {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+\usepackage[shortlabels]{enumitem}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+% \definecolor{darkblue}{rgb}{0.180,0.250,0.164}
+% \definecolor{darkblue}{rgb}{0.5039,0.03125,0.0039}
+% \definecolor{darkblue}{rgb}{0.1562,0.2500,0.3008}
+% \definecolor{darkblue}{rgb}{0.2305,0.6445,0.8633}
+\definecolor{darkblue}{rgb}{0.1133,0.3516,0.5273}
+
+
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[\includegraphics[height=1.5in]{my_picutre}]{Your Name}
+%
+% the picture will be flush right across from the name.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\large \bfseries {\fontfamily{lmtt}\selectfont#2} \hfill #1}\\[-0.45\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \hyphenpenalty=100%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\raggedright {\fontfamily{lmtt}\selectfont#1}}}}%
+    \vspace{-\baselineskip}\par}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=5pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=3pt,topsep=-2pt,partopsep=0pt]}
+        {\end{itemize}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+\newcommand{\quarterblankline}{\quad\vspace{-0.75\baselineskip}\pagebreak[3]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
+\providecommand*\url[1]{\href{#1}{#1}}
+% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
+\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
+%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
+
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    \TeX}}
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Sven Bambach \hfill {\normalsize\href{http://homes.sice.indiana.edu/sbambach}{http://homes.sice.indiana.edu/sbambach}}}
+ 
+\section{Contact Information}
+
+Postdoctoral Research Associate\hfill(812) 360-7324\\
+School of Informatics, Computing, and Engineering (SICE) \hfill \email{sbambach@indiana.edu}\\
+Indiana University Bloomington\\
+\emph{Office address:} 611 N Park Ave, Bloomington, IN 47408
+
+% \emph{Work authorization:} German citizen with lawful permanent residency in the U.S. (green card)
+
+\section{Research Interests}
+
+%My main research interest is computer vision with a specialization in egocentric video. I am curious why, how, and when we look at things and how I can use vision algorithms to predict or emulate human behavior. Most recently, I worked on developing robust methods to visually track and distinguish hands in dynamic interactions, all through the ``eyes'' of first-person cameras. Motivated by the latest success of deep learning methods in vision, I am currently exploring how far we can push the state-of-the-art in egocentric hand detection, localization and segmentation using convolutional neural networks.
+
+% My main research interest is computer vision with a focus on egocentric video. I am curious why, how, and when we look at things and how vision algorithms can be made to predict or emulate human behavior. Most recently, I worked on developing robust methods to track and distinguish hands in dynamic interactions, all through the ``eyes'' of first-person cameras. Motivated by the latest success of deep learning methods in vision, I am currently exploring how far we can push the state-of-the-art in egocentric hand detection, localization, and segmentation using convolutional neural networks.
+
+% My main research interest is computer vision, i.e. the intersection of computer science, machine learning and artificial intelligence that tinvestigates methods of analyzing and understanding the visual world in form of images or videos. My Ph.D. work is focusing of first-person data captured by cameras that try to approximate a person's field of view. I am curious why, how, and when we look at things and how vision algorithms could predict or emulate human behavior. To that end, I have worked on developing robust methods to locate and distinguish hands during complex interactions between the observer and the world. Motivated by the latest success of deep learning methods in vision, I am exploring how far we can push the state-of-the-art in egocentric hand detection, segmentation, and hand type classification using convolutional neural networks.
+
+% My main research interest is computer vision, i.e. the intersection of computer science, machine learning and artificial intelligence that investigates methods of analyzing and understanding the visual world. My Ph.D. work focuses on first-person (egocentric) video that approximates a person's view. I am curious why, how, and when we look at things and how vision algorithms could predict or emulate human behavior. To that end, I have developed robust methods to locate and distinguish hands during complex interactions between the observer and the world.
+% More generally, I am interested in a broad range of vision applications and have worked on tracking, recognition, detection, and scene classification problems using state-of-the-art techniques such as deep learning with convolutional neural networks.
+
+
+% My main research interest is computer vision, i.e. the intersection of computer science, machine learning and artificial intelligence that investigates methods of analyzing and understanding the visual world. My Ph.D. work focused on vision algorithms for first-person (egocentric) cameras that approximate a person's field of view. Motivated by the recent success of deep neural network models in vision, and inspired by many collaborations with developmental psychologists, my current work aims at exploring the interdependency of human learning and machine learning. Can understanding visual learning in toddlers help us improve artificial vision models, and can we use artificial vision models as proxies to help us better understand human vision?
+
+% In today's digital age, our whole world is increasingly driven by data. A fascinating example of this is the commercial success of wearable devices which are filled with sensors that collect personalized behavioral data. Smartwatches and smartphones routinely include multiple cameras, heart rate sensors, altimeters, GPS, and much more. This wealth of noninvasive sensors is also shaping new research paradigms across many disciplines, as almost all of science is becoming more and more computational.
+
+My main research interest is computer vision, i.e. the intersection of computer science, machine learning and artificial intelligence that investigates methods of analyzing and understanding the visual world.  I am particularity excited to harness the potential of wearable camera systems. I believe that such cameras provide a uniquely naturalistic insight into how a person interacts with the world and, since they can now be implemented with lightweight hardware, wearable cameras are becoming interesting tools across many areas in academia (e.g. research in human behavior, psychology, vision) and industry (e.g. smart glasses, police body cameras). I am also very interested in exploring how to apply insights on human learning to machine learning and vice versa. I believe collecting dense and naturalistic behavioral data (e.g. the field of view of a toddler exploring new toys) and analyzing it with novel computational models (e.g. deep neural networks) is a promising new research direction.
+
+\hfill Research statement: \href{https://goo.gl/K1HF9a}{https://goo.gl/K1HF9a}
+
+% These two principles -- utilizing wearable sensors and exploring the mutual benefits of human and machine learning -- underlie my previous work (as highlighted in the following examples) and motivate my future research plans.
+
+\halfblankline
+
+%
+% Education
+%
+
+\section{Education}
+
+\begin{outerlist}
+
+    \item \textbf{Ph.D.} in \href{https://www.sice.indiana.edu/computer-science/}{Computer Science} and \href{http://www.cogs.indiana.edu/} {Cognitive Science} (joint degree) \hfill Sept. 2016
+
+    \begin{innerlist}
+        \item[] \href{http://www.iub.edu}{Indiana University}, Bloomington, IN\\
+        Dissertation: \href{http://homes.sice.indiana.edu/sbambach/papers/dissertation/bambach_dissertation_2016.pdf}{Analyzing Hands with First-Person Computer Vision}\\
+        Committee: \href{http://homes.sice.indiana.edu/djcran/}{David Crandall} (chair),
+        \href{http://psych.indiana.edu/faculty/chenyu.php}{Chen Yu} (co-chair),
+        \href{http://psych.indiana.edu/faculty/smith4.php}{Linda B. Smith},
+        \href{http://michaelryoo.com/}{Michael Ryoo}
+    \end{innerlist}
+
+    \item \textbf{M.S.} in \href{https://www.sice.indiana.edu/computer-science/}{Computer Science} \hfill May 2013
+
+    \begin{innerlist}
+        \item[] \href{http://www.iub.edu}{Indiana University}, Bloomington, IN\\
+        GPA: 4.0
+    \end{innerlist}
+
+    \item \textbf{B.Eng.} in \href{http://www.f07.fh-koeln.de/einrichtungen/imp/institut/overview/}{Media and Imaging Technology} \hfill Nov. 2010
+
+    \begin{innerlist}
+        \item[] \href{https://www.th-koeln.de/en/homepage_26.php}{TH K{\"o}ln - University of Applied Sciences}, Cologne, Germany\\
+        Thesis: \href{http://opus.bibl.fh-koeln.de/volltexte/2011/298/pdf/Bambach_Sven.pdf}{Design and Realization of an Experimental Optical Stop-Motion Capture System}\\
+        Reviewers: \href{https://www.th-koeln.de/personen/stefan.gruenvogel/}{Stefan Gr{\"u}nvogel}, \href{https://www.th-koeln.de/personen/dietmar.kunz/}{Dietmar Kunz}
+    \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+
+%
+% Work
+%
+\section{Academic \& Industrial Appointments}
+
+\begin{outerlist}
+
+    \item \textbf{Postdoctoral Research Associate} \hfill {since Sept. 2016}
+
+    \begin{innerlist}
+        \item[] \href{https://www.sice.indiana.edu/}{School of Informatics, Computing, and Engineering}, \href{http://www.indiana.edu/}{Indiana University}\\
+                Supervisors: \href{http://www.cs.indiana.edu/~djcran/}{David Crandall}, \href{http://psych.indiana.edu/faculty/chenyu.php}{Chen Yu}, \href{http://psych.indiana.edu/faculty/smith4.php}{Linda B. Smith}
+    \end{innerlist}
+
+    \item \textbf{Research Assistant} \hfill {June 2013 - July 2016}
+
+    \begin{innerlist}
+        \item[] \href{https://www.sice.indiana.edu/}{School of Informatics, Computing, and Engineering},\\
+        \href{http://psych.indiana.edu/}{Department of Psychological and Brain Sciences}, \href{http://www.indiana.edu/}{Indiana University}
+    \end{innerlist}
+
+    \item \textbf{Associate Instructor (Teaching Assistant)} \hfill {Sept. 2011 - May 2013}
+    
+    \begin{innerlist}
+        \item[] \href{https://www.sice.indiana.edu/}{School of Informatics, Computing, and Engineering}, \href{http://www.indiana.edu/}{Indiana University}
+    \end{innerlist}
+
+    \item Industrial appointments in Germany:
+
+    \begin{innerlist}
+
+        \item[-] Self-employed media engineer (with \href{https://www.almoe.de/}{alm{\"o} GmbH}) \hfill Jan. 2011 - July 2011
+
+        \item[-]Intern and student assistant at \href{https://www.nexum.de/en/index}{nexum AG} \hfill {June 2008 - Nov. 2010}\\
+        agency for digital media; worked as web developer
+        % is a major consultancy and agency for digital media. I worked in the development department and was part of a large team responsible for the planning and implementation of large-scale internet solutions (front end and back end web development). 
+
+        \item[-] Intern at \href{http://www.meta-fusion.com/}{meta-fusion GmbH} \hfill {May 2009 - Aug. 2009}\\
+        webcast provider; worked as part of the production staff\\and the R\&D team
+        %is a service provider for multi-media and internet applications and specializes in internet video streaming of major conferences. I worked both with the technical staff on location (recording the United Nations Climate Change Conference 2009 in Bonn, Germany) as well as with the research and development department (improving video streaming services). 
+    \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+% \newpage
+
+%
+% Publications
+%
+
+\section{Peer-reviewed Publications}
+
+\begin{outerlist}
+
+    % \item[] \hfill \textbf{2016}
+
+    \item Sven Bambach, Zehua Zhang, David J. Crandall, and Chen Yu. Exploring Inter-Observer Differences in First-Person Object Views using Deep Learning Models.
+    In \emph{Mutual Benefits of Cognitive and Computer Vision Workshop, IEEE International Conference on Computer Vision (ICCV)}, 2017.
+
+    \item Sven Bambach, David J. Crandall, Linda B. Smith, and Chen Yu. An Egocentric Perspective on Active Vision and Visual Object Learning in Toddlers.
+    In \emph{IEEE International Conference on Development and Learning}, 2017.
+    (Oral, 37\% acceptance rate)
+
+    \item Sven Bambach, David J. Crandall, Linda B. Smith, and Chen Yu. Active viewing in toddlers facilitates visual object learning: An egocentric vision approach.
+    In \emph{Annual Conference of the Cognitive Science Society (CogSci)}, 2016.
+    (Oral, 34\% acceptance rate)
+
+    \item Sven Bambach, Linda B. Smith, David J. Crandall, and Chen Yu. Objects in the center: how the infant's body constrains infant scenes.
+    In \emph{IEEE International Conference on Development and Learning}, 2016.
+    (Oral, 34\% acpt. rate) -- \textbf{Distinguished oral presentation award winner}
+
+    % \item[] \hfill \textbf{2015}
+
+    \item Sven Bambach, Stefan Lee, David J. Crandall, and Chen Yu.
+    Lending a hand: Detecting hands and recognizing activities in complex egocentric interactions.
+    In \emph{IEEE International Conference on Computer Vision (ICCV)}, 2015.
+    (30\% acceptance rate)
+
+    \item Sven Bambach, David J. Crandall, and Chen Yu. Viewpoint integration for hand-based recognition of social interactions from a first-person view.
+    In \emph{17th ACM International Conference on Multimodal Interaction (ICMI)}, 2015. (41\% acceptance rate)
+
+    % \item[] \hfill \textbf{2014}
+
+    \item Stefan Lee, Sven Bambach, David J. Crandall, John M. Franchak, and Chen Yu.
+    This hand is my hand: A probabilistic approach to hand disambiguation in egocentric video.
+    In \emph{Workshop on Egocentric Vision, IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 2014. -- \textbf{Intel best paper award winner}
+
+    \item Sven Bambach, John M. Franchak, David J. Crandall, and Chen Yu. Detecting hands in children's egocentric views to understand embodied attention during social interaction.
+    In \emph{Annual Conference of the Cognitive Science Society, (CogSci)}, 2014.
+    (Oral, 41\% acceptance rate)
+
+    % \item[] \hfill \textbf{2013}
+
+    \item Sven Bambach, David J. Crandall, and Chen Yu. Understanding embodied visual attention in child-parent interaction. In \emph{IEEE International Conference on Development and Learning}, 2013. (Oral, 33\% acceptance rate).
+
+\end{outerlist}
+
+\blankline
+
+
+%
+% Teaching
+%
+
+\section{Teaching Experience}
+
+\begin{outerlist}
+
+    \item \textbf{Instructor of Record} \hfill Fall 2016
+
+    \begin{innerlist}
+        \item[-] CSCI B551 \emph{Elements of Artificial Intelligence}, online course (Lead-instructor)\\
+        (included designing and recording interactive video lectures)
+        \item[-] CSCI B551 \emph{Elements of Artificial Intelligence}, residential course (Co-instructor)\\
+        (graduate level course, included giving lectures to a class of \textasciitilde 100 students)
+    \end{innerlist}
+
+    \item \textbf{Teaching Assistant} (IU calls it Associate Instructor) \hfill Sept. 2011 - May 2013
+   
+    \begin{innerlist}
+        \item[-] Spring 2013: CSCI C211 \emph{Introduction to Computer Science} with Francisco Lara Dammer (included designing and teaching labs)
+        \item[-] Fall 2012: CSCI C211 \emph{Introduction to Computer Science} with \href{http://www.cs.indiana.edu/~menzel/}{Suzanne Menzel} and \href{http://www.cs.indiana.edu/~sabry/}{Prof. Sabry} (included designing and teaching labs)
+        \item[-] Spring 2012: CSCI A321 \emph{Computing Tools for Scientific Research} with \href{http://www.cs.indiana.edu/~bramley/}{Prof. Bramley}
+        \item[-] Fall 2011: CSCI P573 \emph{Scientific Computing} with \href{http://www.cs.indiana.edu/~bramley/}{Prof. Bramley}
+
+    \end{innerlist}
+
+    \item Feedback from students:
+
+    \begin{innerlist}
+
+        \item[-] C211 instructor evaluations, $n=36$ students, 0 (strongly disagree) to 4 (strongly agree)\\
+        \emph{Overall, I would rate this instructor as outstanding:} 3.78\\
+        \emph{My instructor developed a good rapport with the class:} 3.81\\
+        \emph{My instructor is fair and impartial when dealing with students:} 3.78
+
+    \end{innerlist}
+
+    \item Teaching statement: \href{https://goo.gl/1BgHw6}{https://goo.gl/1BgHw6}
+
+
+\end{outerlist}
+
+\blankline
+
+%
+% Presentations
+%
+
+\section{Talks \& Presentations}
+
+\begin{outerlist}
+
+    \item \textbf{Paper Presentations at Conferences and Workshops}
+
+    \begin{innerlist}
+        \item[-] IEEE International Conference und Development and Learning and \hfill Sep. 2017\\Epigenetic Robotics, Lisbon, Portugal 
+        \item[-] Annual Conference of the Cognitive Science Society, Philadelphia, PA \hfill Aug. 2016
+    	\item[-] Annual Conference of the Cognitive Science Society, Quebec City, Canada \hfill July 2014
+    	\item[-] IEEE International Conference und Development and Learning and \hfill Aug. 2013\\Epigenetic Robotics, Osaka, Japan 
+    \end{innerlist}
+
+    \item \textbf{Invited Talks}
+
+    \begin{innerlist}
+        \item[-] Special Lecture Series on Machine Learning at \href{http://www.navsea.navy.mil/Home/Warfare-Centers/NSWC-Crane/}{NSWC}, Crane, IN\hfill Nov. 2017
+    	\item[-] Midwest Computer Vision Workshop, Chicago, IL \hfill May 2017
+        \item[-] Midwest Computer Vision Workshop, Chicago, IL \hfill Dec. 2014
+    \end{innerlist}
+
+    \item \textbf{Talks at internal Seminars and Colloquia}
+
+    \begin{innerlist}
+        \item[-] IU Intelligent \& Interactive Systems Talk Series, Bloomington, IN \hfill Oct. 2017
+        \item[-] IU Cognitive Lunch Talk Series, Bloomington, IN \hfill Oct. 2014
+    \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+%
+% Misc
+%
+
+\section{Abstracts in Conferences \& Workshops}
+
+\begin{outerlist}
+
+    \item Sven Bambach, David Crandall, Linda Smith, Chen Yu. Active Vision: Learning Visual Objects through Egocentric Views of Children and Parents. In \emph{
+1st Workshop on Action and Anticipation for Visual Learning, ECCV}, 2016.
+
+    \item Sven Bambach, Stefan Lee, David Crandall, Chen Yu. Detecting and Segmenting Hands to Recognize Social Interactions in Egocentric Video. In \emph{
+    1st International Workshop on Egocentric Perception, Interaction and Computing, ECCV}, 2016.
+
+    \item Sven Bambach, Stefan Lee, David Crandall, and Chen Yu. Analyzing hands to recognize social interactions with a large-scale egocentric hands dataset. In \emph{Workshop on Observing and Understanding Hands in Action, IEEE CVPR}, 2016.
+
+    \item Sven Bambach, Stefan Lee, David Crandall, and Chen Yu. Detecting and classifying hands in social and driving contexts. In \emph{Vision for Intelligent Vehicles and Applications (VIVA) Challenge and Workshop, IEEE Intelligent Vehicles Symposium}, 2015.
+
+    \item Sven Bambach, Stefan Lee, David Crandall, John Franchak, and Chen Yu. Tracking hands of interacting people in egocentric video. In \emph{Workshop on Observing and Understanding Hands in Action, IEEE CVPR}, 2015.
+
+    \item Linda B. Smith, Chen Yu, Sven Bambach, and David Crandall. Watching is not the same as doing. In \emph{International Conference on Infant Studies}, 2014.
+
+\end{outerlist}
+
+\blankline
+
+
+%
+% Awards
+%
+
+\section{Awards}
+
+\begin{outerlist}
+
+    \item \textbf{Fellowships}
+
+    \begin{innerlist}
+        \item[-] Paul Purdom Fellowship Award for Doctoral Studies in Informatics/CS \hfill 2015/2016
+    \end{innerlist}
+
+    \item \textbf{Research Awards}
+
+    \begin{innerlist}
+        \item[-] IEEE ICDL-EPIROB Distinguished Oral Presentation Award \hfill{Sept. 2016}
+        \item[-] 1st place in hand detection/classification at the \emph{Vision for Intelligent} \hfill{June 2015}\\ \emph{Vehicles and Applications (VIVA)} challenge (IEEE IV 2015)
+        \item[-] \emph{Intel} best paper award at the EgoVision Workshop (IEEE CVPR)  \hfill June 2014
+        \item[-] Best poster, IU SOIC OpenHouse on Intelligent and Interactive Systems (IIS) \hfill Apr. 2014
+    \end{innerlist}
+
+    \item \textbf{Travel Awards and Grants}
+
+    \begin{innerlist}
+        \item[-] NSF-sponsored 2016 travel award for young scientists to attend CogSci 2016
+        \item[-] Purdue University C Design Lab and NSF-sponsored travel award to attend CVPR 2016
+        \item[-] IU SOIC Ph.D. student travel grant to attend CVPR 2013 and ICDL 2013
+    \end{innerlist}
+
+    \item \textbf{Undergraduate Awards}, \href{https://www.th-koeln.de/en/homepage_26.php}{TH K{\"o}ln - University of Applied Sciences}
+
+    \begin{innerlist}
+        \item[-] Award for best GPA among all 2010 graduates at the \href{https://www.th-koeln.de/en/information-media-and-electrical-engineering/faculty-of-information-media-and-electrical-engineering_6817.php}{IMP} institute \hfill Nov. 2010
+    \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+%
+% Service
+%
+
+\section{Service}
+
+\begin{outerlist}
+
+    \item \textbf{Reviewing for Conferences}
+
+    \begin{innerlist}
+        \item[-] IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2017, 2018
+        \item[-] IEEE International Conference on Computer Vision (ICCV) 2017
+        \item[-] IEEE Conference on Development and Learning and Epigenetic Robotics (ICDL-EpiRob) 2017
+    \end{innerlist}
+
+    \item \textbf{Reviewing for Journals (ongoing)}
+
+    \begin{innerlist}
+        \item[-] Elsevier Journal of Visual Image Communication \& Representation, since 2017
+        \item[-] IEEE Transactions on Multimedia, since 2017
+    \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+%
+% References
+%
+
+\section{References}
+
+\begin{outerlist}
+
+    \item \textbf{David J. Crandall} \\
+    Associate Professor of Informatics and Computing\\
+    School of Informatics, Computing, and Engineering | Indiana University \\
+    (812) 856-1115 | \href{mailto:djcran@indiana.edu}{djcran@indiana.edu} | \href{https://www.cs.indiana.edu/~djcran/}{https://www.cs.indiana.edu/\textasciitilde djcran/}
+    
+    \item \textbf{Chen Yu}\\
+    Professor of Psychological and Brain Sciences, Cognitive Science and Informatics\\
+    Department of Psychological and Brain Sciences | Indiana University \\
+    (812) 856-0838 | \href{mailto:chenyu@indiana.edu}{chenyu@indiana.edu} | \href{http://psych.indiana.edu/faculty/chenyu.php}{http://psych.indiana.edu/faculty/chenyu.php}
+
+    \item \textbf{Linda B. Smith}\\
+    Distinguished Professor and Chancellor's Professor of Psychological and Brain Sciences\\
+    Department of Psychological and Brain Sciences | Indiana University \\
+    (812) 855-6052| \href{mailto:smith4@indiana.edu}{smith4@indiana.edu} | \href{http://psych.indiana.edu/faculty/smith4.php}{http://psych.indiana.edu/faculty/smith4.php}
+
+    \item \textbf{Stefan Lee}\\
+    Research Scientist II\\
+    School of Interactive Computing | Georgia Tech\\
+    \href{mailto:steflee@gatech.edu}{steflee@gatech.edu} | \href{https://www.cc.gatech.edu/~slee3191/}{https://www.cc.gatech.edu/\textasciitilde slee3191/}
+
+\end{outerlist}
+
+\blankline
+
+%
+% Work authorization
+%
+
+\section{Work Authorization}
+
+I am a German citizen with a green card (United States lawful permanent residency), meaning I am authorized to live and work in the United States of America permanently. %I do not require employment-based sponsorship to work.
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

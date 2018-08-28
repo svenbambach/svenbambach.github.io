@@ -1,0 +1,89 @@
+body, h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	/*font-family: 'Fauna One', serif;*/
+	font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+	color: #7d110c;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #fff;
+	text-shadow: ;
+	text-decoration: none;
+	font-weight: bold;
+	text-shadow: 0px 0px 7px #7d110c;
+}
+
+hr {
+    height: 2px;
+    color: #7d110c;
+    background: #7d110c;
+    border: 0;
+    margin: 20px 0;
+}
+
+div#main {
+	width: 1000px;
+	margin: 0 auto;
+	border-left: 2px solid #7d110c;
+	border-right: 2px solid #7d110c;
+	padding: 0 0 30px 0;
+}
+
+div#header {
+	width: 800px;
+	height: 160px;
+	background: url(header.jpg) 0 0 no-repeat;
+	padding: 23px 0 0 200px;
+}
+
+div#header h1, div#header h2 {
+	color: #fff;
+	text-shadow: 1px 2px #000;
+	font-weight: normal;
+}
+
+div#header h2 {
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: normal;
+}
+
+div#nagivation {
+	margin: -56px 0 0 0;
+	padding: 0 0 0 200px;
+}
+
+div#nagivation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+div#nagivation ul li {
+	float: left;
+	padding: 0 33px 0 0;
+}
+
+div#content {
+	padding: 30px 30px 0 30px;
+	text-align: justify;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+div#content h3 {
+	font-size: 24px;
+	font-weight: normal;
+}
+
+div#updated { 
+	text-align: center;
+	font-size: 11px;
+	margin: 30px 0 0 0;
+}

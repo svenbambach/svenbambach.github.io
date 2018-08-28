@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>Sven Bambach | Ph.D. Student in Computer Science and Cognitive Science | Indiana University Bloomington</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+    	var $root = $('html, body');
+		$('#nagivation a').click(function() {
+	    	var href = $.attr(this, 'href');
+	    	$root.animate({
+	        	scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+	    		}, 500, function () { window.location.hash = href;
+	    	});
+	    	return false;
+		});
+    });
+</script>
+</head>
+<body>
+
+<div id="main">
+	<div id="header">
+		<h1>Sven Bambach</h1>
+		<h2>
+			Ph.D. Student in Computer Science and Cognitive Science<br />
+			Indiana University Bloomington<br />
+			sbambach[at]indiana[dot]edu
+		</h2>
+	</div>
+	<div id="nagivation">
+		<ul>
+			<li><a href="#about-me">About me</a></li>
+			<li><a href="#research">Research</a></li>
+			<li><a href="#publications">Publications</a></li>
+			<li><a href="#employment">Employment</a></li>
+			<li><a href="#teaching">Teaching</a></li>
+			<li><a href="#fun">Fun</a></li>
+			<div style="clear: left"></div>
+		</ul>
+	</div>
+	<div id="content">
+		<a name="about-me"></a>
+		<h3>About me</h3>
+		<p>Hi! I'm Sven. I'm a third year computer science Ph.D. student at <a href="http://iub.edu">Indiana University</a>. I have a B.Eng. degree with a focus in media and imaging technology from Cologne University of Applied Sciences in Germany (2010) and a M.S. in computer science from Indiana University (2013).</p>
+
+		<hr />
+
+		<a name="research"></a>
+		<h3>Research</h3>
+		<p>My main research interest is <a href="http://vision.soic.indiana.edu">computer vision</a>, i.e. the subset of computer science and artificial intelligence that tries to come up with methods of analyzing and understanding images. I am advised by <a href="https://www.cs.indiana.edu/~djcran/">David Crandall</a>.</p>
+
+		<p>Originating from a collaboration with <a href="http://psych.indiana.edu/faculty/chenyu.php">Chen Yu</a> and his <a href="http://www.indiana.edu/~dll/">Computational Cognition and Learning Laboratory</a> comes a specialization in egocentric video. I am interested in why, how and when we look at things (and also how infants learn to do so) and how I can use computer vision algorithms to predict or emulate human behavior. Some topics of current research are visual saliency as a measure of gaze prediction, robust hand tracking and hand-gaze correlations, the role of optical flow in egocentric video.</p>
+
+		<hr />
+
+		<a name="publications"></a>
+		<h3>Publications</h3>
+		<p>From my current research as a Ph.D. student at Indiana University:</p>
+		<ul>
+			<li>Stefan Lee, Sven Bambach, David Crandall, John Franchak, Chen Yu, "This Hand Is My Hand: A Probabilistic Approach to Hand Disambiguation in Egocentric Video", 3rd Workshop on Egocentric (First-person) Vision, IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2014. <b>Intel Best Paper Award Winner!</b> [<a href="papers/cvpr-hands.pdf">PDF</a>]</li>
+			<li>Sven Bambach, John Franchak, David Crandall, Chen Yu, "Detecting Hands in Children's Egocentric Views to Understand Embodied Attention during Social Interaction", Proceedings of the 36nd Annual Conference of the Cognitive Science Society. Quebec City, Canada: Cognitive Science Society, 2014. <i>(Oral, 41.0% acceptance rate)</i> [<a href="papers/cogsci14-hands.pdf">PDF</a>]</li>
+			<li>Sven Bambach, David Crandall, Chen Yu, "Understanding Embodied Visual Attention in Child-Parent Interaction", IEEE Third Joint International Conference on Development and Learning and Epigenetic Robotics (ICDL), 2013. <i>(Oral, 33.0% acceptance rate)</i>  [<a href="papers/icdl-firstperson.pdf">PDF</a>]</li>
+		</ul>
+
+		<p>Survey papers from my Ph.D. qualifying exam that might be of interest for some:</p>
+		<ul>
+			<li>Sven Bambach, "A Survey on Recent Advances of Computer Vision
+Algorithms for Egocentric Video", 2013. [<a href="papers/survey_cv.pdf">PDF</a>]</li>
+			<li>Sven Bambach, "A Survey on the Cognitive Basis of Visual Attention
+in Real-World Behavior", 2013. [<a href="papers/survey_cog_sci.pdf">PDF</a>]</li>
+		</ul>
+
+
+		<p>From my time as an undergraduate student at Cologne University of Applied Sciences:</p>
+		<ul>
+			<li>Sven Bambach, "Design and Realization of an Experimental Optical Stop-Motion Capture System", Cologne University of Applied Sciences ePublications, 2010. (Bachelor Thesis, Reviewers: Dietmar Kunz, Stefan Grünvogel) [<a href="http://opus.bibl.fh-koeln.de/volltexte/2011/298/pdf/Bambach_Sven.pdf">PDF</a>], [<a href="http://www.youtube.com/watch?v=aXA1BIeWS0M">Video</a>]</li>
+		</ul>
+
+		<hr />
+
+		<a name="employment"></a>
+		<h3>Employment</h3>
+		<p>From fall 2011 to spring 2013, I worked as a teaching assistant (officially called associate instructor) at IU (see <a href="#teaching">Teaching</a>). Since June 2013, I have been employed as a research assistant.</p>
+
+		<p>In the time between graduating with my bachelor's degree in Germany and coming to the US (01/2011 - 06/2011), I worked as a self-employed media engineer. My main client was <a href="http://almoe.de">almö GmbH</a>.</p>
+
+		<p>Finally, here are some internships that I did during my time as an undergraduate engineering student at Cologne University of Applied Sciences:</p>
+		<ul>
+			<li><b><a href="http://www.meta-fusion.com/">meta-fusion GmbH</a> 05/2009 - 08/2009, internship:</b> meta-fusion is a service provider for multi-media and internet applications and specializes in internet video streaming of big conferences. I worked both with the technical staff on location (United Nations Climate Change Conference 2009 in Bonn, Germany) as well as with the research/developement department.
+			</li>
+			<li>
+				<b><a href="http://www.nexum.de/en.html?no_cache=1">nexum AG</a> 01/2007 - 06/2007 (internship), 06/2008 - 11/2011 (student assistant):</b> nexum is a big consultancy and agency for digital media. I worked in the developement department and was responsible for the planning and implementation of large scale internet solutions.
+			</li>
+		</ul>
+
+		<hr />
+
+		<a name="teaching"></a>
+		<h3>Teaching</h3>
+		<p>During my first two years at Indiana University, I helped teaching the following courses as an associate instructor:</p>
+		<ul>
+			<li><b>Fall 11: </b>CSCI P573 - "Scientific Computing" with <a href="http://www.cs.indiana.edu/~bramley/">Prof. Bramley</a></li>
+			<li><b>Spring 12: </b>CSCI A321 - "Computing Tools for Scientific Research" with <a href="http://www.cs.indiana.edu/~bramley/">Prof. Bramley</a></li>
+			<li><b>Fall 12: </b>CSCI C211 - "Introduction to Computer Science" with <a href="http://www.cs.indiana.edu/~menzel/">Prof. Menzel</a> and <a href="http://www.cs.indiana.edu/~sabry/">Prof. Sabry</a> (included preparing and teaching labs)</li>
+			<li><b>Spring 13: </b>CSCI C211 - "Introduction to Computer Science" with Prof. Lara-Dammer (included preparing and teaching labs)</li>
+		</ul>
+
+		<hr />
+
+		<a name="fun"></a>
+		<h3>Fun</h3>
+		<p>I don't only like to analyze images, I also like taking them. Although I took some photography classes as an undergraduate, I am far from being a professional. However, I am a proud owner of a Canon SLR camera and a very sparse collection of my photos can be seen on my <a href="http://www.svenbambach.com">personal website</a>.</p>
+
+		<p>I recently started biking as I discovered that it's by far the most fun "basic" outdoor activity to me and Bloomington actually has some really nice bike trails. The "normal" tour that I try to do daily is about 18.5km. Not bad I guess.</p>
+
+		<p>Inspired by playing foosball inbetween classes, my friend and I developed a software capable of tracking all key components of a foosball game in real time (30+ FPS). It was a project for a computer vision class we took in the spring 12 term. A video of our results can be seen <a href="http://www.youtube.com/watch?v=Q80WH4OIqJM">here</a>.</p>
+	</div>
+	<div id="updated">Last Updated: 2014/06/29</div>
+</div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-42723917-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>

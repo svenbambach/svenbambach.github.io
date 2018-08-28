@@ -1,0 +1,20 @@
+Sven Bambach
+
+from CV:
+My main research interest is computer vision, i.e. the intersection of computer science, machine learning and artificial intelligence that investigates methods of analyzing and understanding the visual world. My Ph.D. work focused on vision algorithms for first-person (egocentric) cameras that approximate a person's field of view. Motivated by the recent success of deep neural network models in vision, and inspired by many collaborations with developmental psychologists, my current work aims at exploring the interdependency of human learning and machine learning. Can understanding visual learning in toddlers help us improve artificial vision models, and can we use artificial vision models as proxies to help us better understand human vision?
+
+from Vision website:
+Sven received a B.Eng. degree with a focus in media and imaging technology from Cologne University of Applied Sciences in Germany (2010). He came to Indiana in 2011 and received his M.S. in computer science in 2013 and PhD in both Computer Science and Cognitive Science 2016. His main research interest is in understanding egocentric video, from both technical and human perspectives.
+
+for EAR website:
+Sven Bambach is a postdoctoral fellow at the School of Informatics, Computing, and Engineering. He received a joint Ph.D. in Computer Science and Cognitive Science from IU in 2016. Sven has an extensive background in computer vision, particularly focusing on analyzing videos and photos from first-person (egocentric) cameras that approximate a person's field of view. Motivated by the recent success of deep learning models in vision, and inspired by many collaborations with developmental psychologists who use wearable cameras to study visual learning in infants and toddlers, Sven's current work aims at exploring interdependencies between human and machine learning. To what extend can artificial vision models help us understand and analyze the statistics of an infant's visual input, and conversely, how can we utilize the ease and efficiency that toddlers show when learning to recognize new concepts to improve our A.I. models?
+
+for Crane:
+
+Sven Bambach is a postdoctoral fellow at Indiana University's School of Informatics, Computing, and Engineering. He received a joint Ph.D. in Computer Science and Cognitive Science from IU in 2016. His main research interest is computer vision, i.e. the intersection of computer science, machine learning and artificial intelligence that aims understand the visual world. His dissertation work has focused on analyzing videos and photos from fist-person (egocentric) cameras that approximate a person's field of view. He is currently collaborating with developmental psychologists who use wearable cameras to study visual learning in infants and toddlers as part of an interdisciplinary effort to connect expertise in human learning and machine learning.
+
+Talk title: Basics of Machine Learning
+
+Talk synopsis:
+
+This lecture aims to give a broad introduction to the field of machine learning with a bias towards supervised learning. It is intended for a general audience. Rather than diving into a lot of mathematical detail, I will try to provide a general understanding and appreciation for the kind of problems machine learning can help to solve. While I will briefly cover the ideas behind common classifiers (e.g. support vector machines, perceptrons, neural networks) to build the foundation for follow-up lectures, the main focus will not be on any particular technique, but on demonstrating how a broad range of seemingly unrelated problems (from detecting spam emails to recognizing a German shepherd in a photo) can be thought of in terms of machine learning.
